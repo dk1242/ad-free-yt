@@ -8,6 +8,10 @@ const searchRoutes = require("./routes/searchRoutes");
 const app = express();
 
 app.use(cors());
+app.get("/", (req, res) => {
+  res.send("Hello Visitor!");
+});
+app.get("/favicon.ico", (req, res) => res.status(204));
 app.use("/api", searchRoutes);
 
 const port = process.env.PORT || 8000;
