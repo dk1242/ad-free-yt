@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors());
 app.get("/", (req, res) => {
-  res.send("Hello Visitor!");
+  res.send("Hello Visitor!!");
 });
 app.get("/favicon.ico", (req, res) => res.status(204));
 app.use("/api", searchRoutes);
