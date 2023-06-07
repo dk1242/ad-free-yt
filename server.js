@@ -19,6 +19,7 @@ const port = process.env.PORT || 8000;
 app.listen(port, (err, data) => {
   if (err) {
     console.log(err);
+    return res.status(500).send(err.message);
   } else {
     console.log(`server listening on port: ${port}`);
   }
