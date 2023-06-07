@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { inject } = require("@vercel/analytics");
 
 require("dotenv").config();
 
@@ -7,6 +8,7 @@ const searchRoutes = require("./routes/searchRoutes");
 
 const app = express();
 
+inject();
 
 app.use(cors());
 app.get("/", (req, res) => {
