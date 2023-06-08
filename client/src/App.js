@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/watch/:videoId" element={<VideoPage />} />
+        <Route path="*" element={<div> Not Found or You do not have permission.</div>}/>
       </Routes>
     </BrowserRouter>
   );
