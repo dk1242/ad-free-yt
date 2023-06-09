@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
-import WatchNext from "./WatchNext";
+import "react-multi-carousel/lib/styles.css";
+import RelatedVideos from "./RelatedVideos";
 
 const VideoPage = (props) => {
   let { state } = useLocation();
@@ -20,7 +21,6 @@ const VideoPage = (props) => {
   );
   const [relatedVideos, setRelatedVideos] = useState([]);
   const [watchNextVideos, setWatchNextVideos] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const fetchRelatedData = async () => {
     await fetch("https://ad-free-yt.vercel.app/api/video/" + vidId, {
@@ -46,11 +46,14 @@ const VideoPage = (props) => {
           data.result.twoColumnWatchNextResults.results.results.contents[0]
             .videoPrimaryInfoRenderer.relativeDateText.simpleText
         );
-        setWatchNextVideos(
-          data.watchNext.playerOverlayRenderer.endScreen
-            .watchNextEndScreenRenderer.results
+        // setWatchNextVideos(
+        //   data.watchNext.playerOverlayRenderer.endScreen
+        //     .watchNextEndScreenRenderer.results
+        // );
+        setRelatedVideos(
+          data.result.twoColumnWatchNextResults.secondaryResults
+            .secondaryResults.results
         );
-        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -88,14 +91,17 @@ const VideoPage = (props) => {
           </Col>
         </Row>
       </div>
-      {/* <div>
-        {watchNextVideos.length > 0 ? (
-          <WatchNext videoData={watchNextVideos} />
+      <br />
+      <div className="shadow p-3 mb-5 bg-white rounded">
+        <h3>Related Videos:</h3>
+        <br />
+        {relatedVideos.length > 0 ? (
+          <RelatedVideos videoData={relatedVideos} />
         ) : (
           <h4>Loading...</h4>
         )}
-      </div> */}
-      
+      </div>
+      <br />
     </Container>
   );
 };
