@@ -121,6 +121,9 @@ const RelatedVideos = (props) => {
                     textDecoration: "none",
                     color: "inherit",
                   }}
+                  onClick={() => {
+                    window.location.reload();
+                  }}
                 >
                   <Image
                     src={video.compactVideoRenderer.thumbnail.thumbnails[1].url}
@@ -158,6 +161,9 @@ const RelatedVideos = (props) => {
                       style={{
                         textDecoration: "none",
                         color: "inherit",
+                      }}
+                      onClick={() => {
+                        window.location.reload();
                       }}
                     >
                       {video.compactVideoRenderer.title.simpleText}

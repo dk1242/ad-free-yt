@@ -32,20 +32,22 @@ const VideoPage = (props) => {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
-        setTitle(
-          data.result.twoColumnWatchNextResults.results.results.contents[0]
-            .videoPrimaryInfoRenderer.title.runs[0].text
+        data.result.twoColumnWatchNextResults.results.results.contents.map(
+          (content) => {
+            if (content.videoPrimaryInfoRenderer) {
+              setTitle(content.videoPrimaryInfoRenderer.title.runs[0].text);
+              setViews(
+                content.videoPrimaryInfoRenderer.viewCount
+                  .videoViewCountRenderer.shortViewCount.simpleText
+              );
+              setPosted(
+                content.videoPrimaryInfoRenderer.relativeDateText.simpleText
+              );
+            }
+            return content;
+          }
         );
-        setViews(
-          data.result.twoColumnWatchNextResults.results.results.contents[0]
-            .videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer
-            .shortViewCount.simpleText
-        );
-        setPosted(
-          data.result.twoColumnWatchNextResults.results.results.contents[0]
-            .videoPrimaryInfoRenderer.relativeDateText.simpleText
-        );
+
         // setWatchNextVideos(
         //   data.watchNext.playerOverlayRenderer.endScreen
         //     .watchNextEndScreenRenderer.results
