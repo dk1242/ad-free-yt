@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RelatedVideos = (props) => {
   const [videos, setVideos] = useState(props.videoData);
-  console.log(videos);
+  const navigate = useNavigate();
   return (
     <Carousel
       additionalTransfrom={0}
@@ -122,7 +122,7 @@ const RelatedVideos = (props) => {
                     color: "inherit",
                   }}
                   onClick={() => {
-                    window.location.reload();
+                    navigate(`/watch/${video.compactVideoRenderer.videoId}`);
                   }}
                 >
                   <Image
@@ -163,7 +163,9 @@ const RelatedVideos = (props) => {
                         color: "inherit",
                       }}
                       onClick={() => {
-                        window.location.reload();
+                        navigate(
+                          `/watch/${video.compactVideoRenderer.videoId}`
+                        );
                       }}
                     >
                       {video.compactVideoRenderer.title.simpleText}
