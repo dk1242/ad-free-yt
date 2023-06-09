@@ -123,6 +123,7 @@ const RelatedVideos = (props) => {
                   }}
                   onClick={() => {
                     navigate(`/watch/${video.compactVideoRenderer.videoId}`);
+                    window.location.reload();
                   }}
                 >
                   <Image
