@@ -166,6 +166,7 @@ const RelatedVideos = (props) => {
                         navigate(
                           `/watch/${video.compactVideoRenderer.videoId}`
                         );
+                        window.location.reload();
                       }}
                     >
                       {video.compactVideoRenderer.title.simpleText}
