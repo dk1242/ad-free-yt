@@ -78,7 +78,7 @@ const VideoPage = (props) => {
             title={title}
             frameborder="2"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-            allowfullscreen
+            allowFullScreen={true}
           ></iframe>
         </Row>
         <br />
