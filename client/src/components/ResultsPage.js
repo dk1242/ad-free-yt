@@ -19,7 +19,13 @@ const ResultsPage = (props) => {
 
   return (
     <Container>
-      {videoData.length > 0 && <VideoResults videoData={videoData} />}
+      {videoData.length > 0 ? (
+        <VideoResults videoData={videoData} />
+      ) : (
+        <h5 style={{ textAlign: "center" }}>
+          No videos were found for this search query. Please try with something else.
+        </h5>
+      )}
     </Container>
   );
 };
