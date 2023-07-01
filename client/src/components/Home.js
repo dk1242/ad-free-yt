@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import ResultsPage from "./ResultsPage";
 import { Link, useLocation } from "react-router-dom";
+import "../App.css";
+import YTLinkInput from "./YTLinkInput";
 
 const Home = (props) => {
   const { state } = useLocation();
@@ -100,8 +102,14 @@ const Home = (props) => {
       ) : (
         <Row style={{ textAlign: "center" }}>
           <div className="spinner-container">
-            <div style={{ fontSize: "20px" }}>
-              Enter your query in the search box above.
+            <div id="yt-link-cont">
+              Enter the Youtube video title in the search box above.
+              <br />
+              or
+              <br />
+              Directly Paste the Youtube video link below
+              <br />
+              <YTLinkInput />
             </div>
           </div>
         </Row>

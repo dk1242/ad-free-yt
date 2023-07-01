@@ -92,3 +92,8 @@
     text-align: left;
   }
 }
+
+#yt-link-cont {
+  font-size: 20px;
+  white-space: pre-wrap;
+}
